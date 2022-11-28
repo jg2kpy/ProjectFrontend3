@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Venta } from '../models/venta.model';
+import { VentasService } from '../service/ventas.service';
+
+
 
 @Component({
   selector: 'app-ventas',
@@ -7,9 +11,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VentasComponent implements OnInit {
 
-  constructor() { }
+  listaVentas: Venta[] = [];
+
+  constructor(
+    private ventasService: VentasService
+  ) { }
 
   ngOnInit(): void {
+    this.listaVentas = this.ventasService.getVentas();
+  }
+
+  getDetalles(venta: Venta){
+    
   }
 
 }

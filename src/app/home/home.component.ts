@@ -17,8 +17,8 @@ export class HomeComponent implements OnInit {
     if(localStorage.getItem("listaProductos") == undefined){
       localStorage.setItem("listaProductos", '[{"codigo": "abc","nombre": "Coca Cola","precioVenta": 5000,"existencia": 50}]')
     }
-    if(localStorage.getItem("listaProductos") == undefined){
-      localStorage.setItem("listaVentas", '[{"id":"1","fecha": "28/11/22","numero": "1","cliente": "12345","total": 5000."detalles":[{"producto":"abc","cantidad":1,"total":5000}]}]')
+    if(localStorage.getItem("listaVentas") == undefined){
+      localStorage.setItem("listaVentas", '[{"id":"1","fecha": "28/11/22","numero": "1","cliente": "12345","detalles":[{"producto":"abc","cantidad":1,"total":5000}],"total": 5000}]')
     }
   }
 }
