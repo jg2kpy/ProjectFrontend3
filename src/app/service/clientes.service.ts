@@ -5,31 +5,37 @@ import { Cliente } from '../models/cliente.model';
   providedIn: 'root',
 })
 export class ClientesService {
-  constructor() {}
+  constructor() { }
 
   getClientes(): Cliente[] {
     return JSON.parse(localStorage.getItem('listaClientes') || '');
   }
 
-  //TODO: Verificar que no se repite ruc o email
-  addCliente(agregar: Cliente): Cliente {
+  addCliente(agregar: Cliente): Cliente[] | null {
     let clientes: Cliente[] = this.getClientes();
+    if (!clientes.some((cliente) => cliente.ruc == agregar.ruc)) {
+      return null;
+    }
     clientes.push(agregar);
     localStorage.setItem('listaClientes', JSON.stringify(clientes));
-    return agregar;
+    return clientes;
   }
 
-  //TODO: Verificar exista con ese RUC
-  updateCliente(actualizado: Cliente): Cliente[] {
+  updateCliente(actualizado: Cliente): Cliente[] | null {
     let clientes: Cliente[] = this.getClientes();
     let cliente = clientes.filter((cliente) => cliente.ruc == actualizado.ruc)
+    if (cliente.length == 0) {
+      return null;
+    }
     cliente[0] = actualizado
     return clientes;
   }
 
-  //TODO: Verificar exista con ese RUC
-  deleteCliente(eliminar: Cliente): Cliente[] {
+  deleteCliente(eliminar: Cliente): Cliente[] | null {
     let clientes: Cliente[] = this.getClientes();
+    if (clientes.indexOf(eliminar) == -1) {
+      return null;
+    }
     clientes.splice(clientes.indexOf(eliminar))
     return clientes;
   }
