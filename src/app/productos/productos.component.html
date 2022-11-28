@@ -1,0 +1,30 @@
+<app-navbar></app-navbar>
+<br><br><br>
+<div style="text-align: center;">
+    <h1>Productos</h1>
+</div>
+
+<div *ngIf="listaProductos.length>0" class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Código</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Precio de Venta</th>
+                <th scope="col">Existencias</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let producto of listaProductos">
+                <td>{{producto.codigo}}</td>
+                <td>{{producto.nombre}}</td>
+                <td>{{producto.precioVenta}}</td>
+                <td>{{producto.existencia }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <a class="btn btn-primary btn-sm" href="/ficha-clinica/agregar-ficha">Agregar Producto</a>
+    </div>
+</div>
+<br>
