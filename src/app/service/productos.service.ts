@@ -13,7 +13,8 @@ export class ProductosService {
 
   addProducto(agregar: Producto): Producto[] | null {
     let productos: Producto[] = this.getProductos();
-    if (!productos.some((producto) => producto.codigo == agregar.codigo)) {
+    console.log(productos);
+    if (productos.some((producto) => producto.codigo == agregar.codigo)) {
       return null;
     }
     productos.push(agregar);
