@@ -1,4 +1,4 @@
-export interface Cliente {
+export interface Venta {
   id: String,
   fecha: String,
   numero: String,
