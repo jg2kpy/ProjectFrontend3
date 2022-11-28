@@ -1,0 +1,22 @@
+<app-navbar></app-navbar>
+<br><br><br>
+<div class="container">
+    <div style="text-align: center;">
+        <h1>Productos</h1>
+    </div>
+
+    <br>
+    <form class="mb-3 mt-3">
+        Codigo <input type="string" class="form-control" placeholder="Codigo" [(ngModel)]="codigo" [ngModelOptions]="{standalone: true}">
+        Nombre <input type="string" class="form-control" placeholder="Nombre" [(ngModel)]="nombre" [ngModelOptions]="{standalone: true}">
+        Precio de Venta <input type="number" class="form-control" placeholder="Precio de Venta" [(ngModel)]="precioVenta" [ngModelOptions]="{standalone: true}">
+        Existencias <input type="number" class="form-control" placeholder="Existencias" [(ngModel)]="existencia" [ngModelOptions]="{standalone: true}">
+    </form>
+    <br>
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button type="button" class="btn btn-primary btn-sm" (click)="guardar()">Guardar</button>
+        <button type="button" class="btn btn-primary btn-sm" (click)="limpiar()">Limpiar</button>
+        <a class="btn btn-primary btn-sm" href="/productos">Cancelar</a>
+    </div>
+</div>

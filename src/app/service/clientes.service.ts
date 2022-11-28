@@ -13,7 +13,7 @@ export class ClientesService {
 
   addCliente(agregar: Cliente): Cliente[] | null {
     let clientes: Cliente[] = this.getClientes();
-    if (!clientes.some((cliente) => cliente.ruc == agregar.ruc)) {
+    if (clientes.some((cliente) => cliente.ruc == agregar.ruc)) {
       return null;
     }
     clientes.push(agregar);
