@@ -28,17 +28,19 @@ export class ProductosService {
     if (producto.length == 0) {
       return null;
     }
-    producto[0] = actualizado
+    productos[productos.indexOf(producto[0])] = actualizado
+    localStorage.setItem('listaProductos', JSON.stringify(productos));
     return productos;
   }
 
   deleteProducto(eliminar: Producto): Producto[] | null {
     let productos: Producto[] = this.getProductos();
-    let pos_producto = productos.indexOf(eliminar);
-    if (pos_producto == -1) {
+    let producto = productos.filter((producto) => producto.codigo == eliminar.codigo)
+    if (producto.length == 0) {
       return null;
     }
-    productos.splice(pos_producto)
+    productos.splice(productos.indexOf(producto[0]))
+    localStorage.setItem('listaProductos', JSON.stringify(productos));
     return productos;
   }
 }

@@ -1,30 +1,99 @@
 <app-navbar></app-navbar>
 <br><br><br>
 <div style="text-align: center;">
-    <h1>Productos</h1>
+  <h1>Productos</h1>
 </div>
 
 <div *ngIf="listaProductos.length>0" class="container">
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th scope="col">Código</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Precio de Venta</th>
-                <th scope="col">Existencias</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let producto of listaProductos">
-                <td>{{producto.codigo}}</td>
-                <td>{{producto.nombre}}</td>
-                <td>{{producto.precioVenta}}</td>
-                <td>{{producto.existencia }}</td>
-            </tr>
-        </tbody>
-    </table>
-    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <a class="btn btn-primary btn-sm" href="productos/agregar">Agregar Producto</a>
-    </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Código</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Precio de Venta</th>
+        <th scope="col">Existencias</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let producto of listaProductos">
+        <td>{{producto.codigo}}</td>
+        <td>{{producto.nombre}}</td>
+        <td>{{producto.precioVenta}}</td>
+        <td>{{producto.existencia }}</td>
+        <td>
+          <div class="btn-group" role="group" aria-label="Basic outlined example">
+            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editarModal"
+              (click)="setProducto(producto)">Modificar</button>
+            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#eliminarModal"
+              (click)="setProducto(producto)">Eliminar</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div style="text-align: center;">
+  <a class="btn btn-primary btn-sm" href="productos/agregar">Agregar Producto</a>
 </div>
 <br>
+
+
+<!-- Modal -->
+<div class="modal fade" id="editarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Editar Producto</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Codigo: {{productoSeleccionado.codigo}}</p>
+
+        <p>Nombre actual: {{productoSeleccionado.nombre}}</p>
+        <p>Precio de Venta actual: {{productoSeleccionado.precioVenta}}</p>
+        <p>Existencia actual: {{productoSeleccionado.existencia}}</p>
+
+        <p>Nombre nuevo: <input [(ngModel)]="productoAEditar.nombre" [ngModelOptions]="{standalone: true}" class="form-control"></p>
+        <p>Precio de Venta nuevo: <input [(ngModel)]="productoAEditar.precioVenta"
+            [ngModelOptions]="{standalone: true}" class="form-control"></p>
+        <p>Existencia nuevo: <input [(ngModel)]="productoAEditar.existencia" [ngModelOptions]="{standalone: true}" class="form-control"></p>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+          (click)="editarProducto()">Actualizar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="eliminarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Eliminar Producto</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-header">
+        <h5>Esta seguro que desea eliminar este producto?</h5>
+      </div>
+      <div class="modal-body">
+        <p>Codigo: {{productoSeleccionado.codigo}}</p>
+
+        <p>Nombre: {{productoSeleccionado.nombre}}</p>
+        <p>Precio de Venta: {{productoSeleccionado.precioVenta}}</p>
+        <p>Existencia: {{productoSeleccionado.existencia}}</p>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+          (click)="eliminarProducto()">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>

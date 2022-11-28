@@ -1,6 +1,6 @@
-export interface Producto {
-    codigo: String,
-    nombre: String,
-    precioVenta: number,
-    existencia: number,
+export class Producto {
+    codigo!: String;
+    nombre!: String;
+    precioVenta!: number;
+    existencia!: number;
   }
