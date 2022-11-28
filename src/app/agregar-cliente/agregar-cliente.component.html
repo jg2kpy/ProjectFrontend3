@@ -1,0 +1,21 @@
+<app-navbar></app-navbar>
+<br><br><br>
+<div class="container">
+    <div style="text-align: center;">
+        <h1>Agregar Cliente</h1>
+    </div>
+
+    <br>
+    <form class="mb-3 mt-3">
+        RUC <input type="string" class="form-control" placeholder="RUC" [(ngModel)]="ruc" [ngModelOptions]="{standalone: true}">
+        Nombre Completo <input type="string" class="form-control" placeholder="Nombre Completo" [(ngModel)]="nombreCompleto" [ngModelOptions]="{standalone: true}">
+        Email <input type="email" class="form-control" placeholder="Email" [(ngModel)]="email" [ngModelOptions]="{standalone: true}">
+    </form>
+    <br>
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button type="button" class="btn btn-primary btn-sm" (click)="guardar()">Guardar</button>
+        <button type="button" class="btn btn-primary btn-sm" (click)="limpiar()">Limpiar</button>
+        <a class="btn btn-primary btn-sm" href="/clientes">Cancelar</a>
+    </div>
+</div>

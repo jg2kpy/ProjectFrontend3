@@ -9,6 +9,7 @@ import { ClientesComponent } from './clientes/clientes.component';
 import { HomeComponent } from './home/home.component';
 import { ProductosComponent } from './productos/productos.component';
 import { AgregarProductoComponent } from './agregar-producto/agregar-producto.component';
+import { AgregarClienteComponent } from './agregar-cliente/agregar-cliente.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { AgregarProductoComponent } from './agregar-producto/agregar-producto.co
     HomeComponent,
     ProductosComponent,
     AgregarProductoComponent,
+    AgregarClienteComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

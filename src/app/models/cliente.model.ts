@@ -1,5 +1,5 @@
-export interface Cliente {
-  ruc: String,
-  nombreCompleto: String,
-  email: String
+export class Cliente {
+  ruc!: String;
+  nombreCompleto!: String;
+  email!: String;
 }
