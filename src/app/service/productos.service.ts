@@ -14,7 +14,7 @@ export class ProductosService {
   addProducto(agregar: Producto): Producto[] | null {
     let productos: Producto[] = this.getProductos();
     console.log(productos);
-    if (productos.some((producto) => producto.codigo == agregar.codigo)) {
+    if (productos.some((producto) => producto.codigo === agregar.codigo)) {
       return null;
     }
     productos.push(agregar);
@@ -24,7 +24,7 @@ export class ProductosService {
 
   updateProducto(actualizado: Producto): Producto[] | null {
     let productos: Producto[] = this.getProductos();
-    let producto = productos.filter((producto) => producto.codigo == actualizado.codigo)
+    let producto = productos.filter((producto) => producto.codigo === actualizado.codigo)
     if (producto.length == 0) {
       return null;
     }
