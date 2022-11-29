@@ -23,24 +23,24 @@ export class ClientesService {
 
   updateCliente(actualizado: Cliente): Cliente[] | null {
     let clientes: Cliente[] = this.getClientes();
-    let producto = clientes.filter(
-      (producto) => producto.ruc == actualizado.ruc
+    let cliente = clientes.filter(
+      (cliente) => cliente.ruc == actualizado.ruc
     );
-    if (producto.length == 0) {
+    if (cliente.length == 0) {
       return null;
     }
-    clientes[clientes.indexOf(producto[0])] = actualizado;
+    clientes[clientes.indexOf(cliente[0])] = actualizado;
     localStorage.setItem('listaClientes', JSON.stringify(clientes));
     return clientes;
   }
 
   deleteCliente(eliminar: Cliente): Cliente[] | null {
     let clientes: Cliente[] = this.getClientes();
-    let producto = clientes.filter((producto) => producto.ruc == eliminar.ruc);
-    if (producto.length == 0) {
+    let cliente = clientes.filter((cliente) => cliente.ruc == eliminar.ruc);
+    if (cliente.length == 0) {
       return null;
     }
-    clientes.splice(clientes.indexOf(producto[0]));
+    clientes.splice(clientes.indexOf(cliente[0]));
     localStorage.setItem('listaClientes', JSON.stringify(clientes));
     return clientes;
   }
