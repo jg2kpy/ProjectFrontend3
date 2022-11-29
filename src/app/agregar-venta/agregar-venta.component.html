@@ -1,0 +1,37 @@
+<app-navbar></app-navbar>
+<br><br><br>
+<div class="container">
+    <div style="text-align: center;">
+        <h1>Agregar Producto</h1>
+    </div>
+
+    <br>
+    <form class="mb-3 mt-3">
+        <label for="startDate">Fecha</label>
+        <input id="startDate" class="form-control" type="date"  [(ngModel)]="fecha" [ngModelOptions]="{standalone: true}"/>
+        Cliente <input type="text" class="form-control" placeholder="RUC" [(ngModel)]="cliente" [ngModelOptions]="{standalone: true}">
+        Total <input type="text" class="form-control" readonly placeholder="RUC" [(ngModel)]="total" [ngModelOptions]="{standalone: true}">
+        <div *ngFor="let detalle of listaDetalles">
+            <hr>
+            <select class="form-control" name="selectAction" (change)="asignarProducto(detalle,t.value)"  [(ngModel)]="detalle.producto" [ngModelOptions]="{standalone: true}" #t>
+                    <option *ngFor="let p of listaProductos" [value]="p.codigo">
+                    {{p.nombre}}
+                    </option> 
+            </select>
+            Cantidad <input type="number" class="form-control" placeholder="Cantidad" [(ngModel)]="detalle.cantidad" [ngModelOptions]="{standalone: true}" (change)="verificarTotal(detalle)">
+            Subtotal <input type="number" class="form-control" readonly placeholder="Subtotal" [(ngModel)]="detalle.total" [ngModelOptions]="{standalone: true}">
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3">
+            <button type="button" class="btn btn-outline-success btn-sm" (click)="nuevoDetalle()" *ngIf="!listaDetalles.length || (listaDetalles[listaDetalles.length-1].producto && listaDetalles[listaDetalles.length-1].cantidad)">+</button>
+        </div>
+    </form>
+    <br>
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button type="button" class="btn btn-primary btn-sm" (click)="guardar()" 
+        *ngIf="listaDetalles.length && fecha && cliente && listaDetalles[listaDetalles.length-1].producto && listaDetalles[listaDetalles.length-1].cantidad"
+        >Guardar</button>
+        <button type="button" class="btn btn-primary btn-sm" (click)="limpiar()">Limpiar</button>
+        <a class="btn btn-primary btn-sm" href="/ventas">Cancelar</a>
+    </div>
+</div>

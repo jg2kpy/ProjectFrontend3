@@ -1,12 +1,10 @@
+import { Detalles } from "./detalles.model copy"
+
 export class Venta {
-  id!: String
+  id!: number
   fecha!: String
-  numero!: String
+  numero!: number
   cliente!: String
   total!: number
-  detalles!: [{
-    producto: String,
-    cantidad: number,
-    total: number
-  }]
+  detalles!: Detalles[]
 }

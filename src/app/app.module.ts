@@ -11,6 +11,7 @@ import { ProductosComponent } from './productos/productos.component';
 import { VentasComponent } from './ventas/ventas.component';
 import { AgregarProductoComponent } from './agregar-producto/agregar-producto.component';
 import { AgregarClienteComponent } from './agregar-cliente/agregar-cliente.component';
+import { AgregarVentaComponent } from './agregar-venta/agregar-venta.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { AgregarClienteComponent } from './agregar-cliente/agregar-cliente.compo
     VentasComponent,
     AgregarProductoComponent,
     AgregarClienteComponent,
+    AgregarVentaComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
