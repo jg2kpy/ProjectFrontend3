@@ -1,0 +1,36 @@
+<br><br><br><br>
+
+<div style="text-align: center;">
+    <h1>Ventas</h1>
+  </div>
+  
+  <div *ngIf="listaVentas.length>0" class="container">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Código</th>
+          <th scope="col">Fecha</th>
+          <th scope="col">Numero</th>
+          <th scope="col">Cliente</th>
+          <th scope="col">Ver Detalles</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let venta of listaVentas">
+          <td>{{venta.id}}</td>
+          <td>{{venta.fecha}}</td>
+          <td>{{venta.numero}}</td>
+          <td>{{venta.cliente }}</td>
+          <td>
+            <div class="btn-group" role="group" aria-label="Basic outlined example">
+              <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editarModal"
+                (click)="getDetalles(venta)">Ver Detalles</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="text-align: center;">
+    <a class="btn btn-primary btn-sm">Agregar Venta</a>
+  </div>
