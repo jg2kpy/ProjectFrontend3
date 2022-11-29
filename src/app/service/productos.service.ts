@@ -35,7 +35,7 @@ export class ProductosService {
 
   deleteProducto(eliminar: Producto): Producto[] | null {
     let productos: Producto[] = this.getProductos();
-    let producto = productos.filter((producto) => producto.codigo == eliminar.codigo)
+    let producto = productos.filter((producto) => producto.codigo === eliminar.codigo)
     if (producto.length == 0) {
       return null;
     }
