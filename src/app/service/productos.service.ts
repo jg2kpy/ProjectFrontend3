@@ -39,7 +39,7 @@ export class ProductosService {
     if (producto.length == 0) {
       return null;
     }
-    productos.splice(productos.indexOf(producto[0]))
+    productos.splice(productos.indexOf(producto[0]),1)
     localStorage.setItem('listaProductos', JSON.stringify(productos));
     return productos;
   }

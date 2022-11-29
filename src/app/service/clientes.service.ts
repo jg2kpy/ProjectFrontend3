@@ -40,7 +40,7 @@ export class ClientesService {
     if (cliente.length == 0) {
       return null;
     }
-    clientes.splice(clientes.indexOf(cliente[0]));
+    clientes.splice(clientes.indexOf(cliente[0]),1);
     localStorage.setItem('listaClientes', JSON.stringify(clientes));
     return clientes;
   }

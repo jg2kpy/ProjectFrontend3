@@ -39,7 +39,7 @@ export class VentasService {
     if (pos_venta == -1) {
       return null;
     }
-    ventas.splice(pos_venta)
+    ventas.splice(pos_venta,1)
     return ventas;
   }
 }
