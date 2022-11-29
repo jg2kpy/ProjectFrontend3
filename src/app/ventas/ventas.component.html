@@ -3,15 +3,45 @@
 <div style="text-align: center;">
     <h1>Ventas</h1>
   </div>
-  
+
+  <!-- Agregar el filtro  por fecha -->
+  <div class="container">
+    <h4>Filtros de busqueda</h4>
+    <table class="mb-3">
+        <tr>
+            <td>
+                <label for="FechaDesde">Fecha Desde</label>
+                <input id="FechaDesde" class="form-control" type="date" [(ngModel)]="fechaDesde" />
+            </td>
+            <td>
+                <label for="FechaHasta">Fecha Hasta</label>
+                <input id="FechaHasta" class="form-control" type="date" [(ngModel)]="fechaHasta" />
+            </td>
+        </tr>
+    </table>
+    <form class="mb-3">
+        Cliente <input type="text" class="form-control" placeholder="Ruc del Cliente" [(ngModel)]="rucCliente" [ngModelOptions]="{standalone: true}">
+    </form>
+
+    <div style="color: red; display: inline;">{{mensajeErrorFiltro}} </div>
+    <div style="display: inline; cursor: pointer;" *ngIf="mensajeErrorFiltro" (click)="mensajeErrorFiltro=''">x</div>
+    <br>
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button type="button" class="btn btn-primary btn-sm" (click)="filtrar()">Buscar</button>
+        <button type="button" class="btn btn-primary btn-sm" (click)="Limpiar()">Limpiar</button>
+    </div>
+</div>
+<br>
+
   <div *ngIf="listaVentas.length>0" class="container">
     <table class="table table-striped">
       <thead>
         <tr>
-          <th scope="col">Código</th>
+          <th scope="col">id</th>
           <th scope="col">Fecha</th>
-          <th scope="col">Numero</th>
-          <th scope="col">Cliente</th>
+          <th scope="col">Nro Factura</th>
+          <th scope="col">Ruc Cliente</th>
           <th scope="col">Ver Detalles</th>
         </tr>
       </thead>
