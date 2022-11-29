@@ -13,7 +13,7 @@ export class ClientesService {
 
   addCliente(agregar: Cliente): Cliente[] | null {
     let clientes: Cliente[] = this.getClientes();
-    if (clientes.some((cliente) => cliente.ruc == agregar.ruc)) {
+    if (clientes.some((cliente) => cliente.ruc === agregar.ruc)) {
       return null;
     }
     clientes.push(agregar);
@@ -24,7 +24,7 @@ export class ClientesService {
   updateCliente(actualizado: Cliente): Cliente[] | null {
     let clientes: Cliente[] = this.getClientes();
     let cliente = clientes.filter(
-      (cliente) => cliente.ruc == actualizado.ruc
+      (cliente) => cliente.ruc === actualizado.ruc
     );
     if (cliente.length == 0) {
       return null;
@@ -36,7 +36,7 @@ export class ClientesService {
 
   deleteCliente(eliminar: Cliente): Cliente[] | null {
     let clientes: Cliente[] = this.getClientes();
-    let cliente = clientes.filter((cliente) => cliente.ruc == eliminar.ruc);
+    let cliente = clientes.filter((cliente) => cliente.ruc === eliminar.ruc);
     if (cliente.length == 0) {
       return null;
     }
