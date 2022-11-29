@@ -15,7 +15,7 @@ export class VentasService {
   addVenta(agregar: Venta): Venta[] | null {
     let ventas: Venta[] = this.getVentas();
     console.log(ventas);
-    if (ventas.some((venta) => venta.id == agregar.id)) {
+    if (ventas.some((venta) => venta.id === agregar.id)) {
       return null;
     }
     ventas.push(agregar);
@@ -25,7 +25,7 @@ export class VentasService {
 
   updateVenta(actualizado: Venta): Venta[] | null {
     let ventas: Venta[] = this.getVentas();
-    let venta = ventas.filter((venta) => venta.id == actualizado.id)
+    let venta = ventas.filter((venta) => venta.id === actualizado.id)
     if (venta.length == 0) {
       return null;
     }
