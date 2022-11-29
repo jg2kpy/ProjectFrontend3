@@ -7,6 +7,7 @@ import { ProductosComponent } from './productos/productos.component';
 import { AgregarProductoComponent } from './agregar-producto/agregar-producto.component';
 import { AgregarClienteComponent } from './agregar-cliente/agregar-cliente.component';
 import { VentasComponent } from './ventas/ventas.component';
+import { AgregarVentaComponent } from './agregar-venta/agregar-venta.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,10 @@ const routes: Routes = [
   {
     path: 'ventas',
     component: VentasComponent,
+  },
+  {
+    path: 'ventas/agregar',
+    component: AgregarVentaComponent,
   },
 ];
 

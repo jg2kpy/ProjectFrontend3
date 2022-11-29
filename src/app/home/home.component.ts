@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
       localStorage.setItem("listaProductos", '[{"codigo":"abc","nombre":"Coca Cola en Lata","precioVenta":5000,"existencia":50},{"codigo":"abd123","nombre":"Coca cola 3lts","precioVenta":13000,"existencia":30},{"codigo":"abf156","nombre":"Pringles Papa Frita Barbacoa","precioVenta":19000,"existencia":19},{"codigo":"abr675","nombre":"Monster Blanco 600ml","precioVenta":12000,"existencia":10},{"codigo":"aby243","nombre":"Galletita Bono","precioVenta":6000,"existencia":25},{"codigo":"eee621","nombre":"Bad Dragon ","precioVenta":350000,"existencia":9}]')
     }
     if(localStorage.getItem("listaVentas") == undefined){
-      localStorage.setItem("listaVentas", '[{"id":"1","fecha": "2022-11-28","numero": "1","cliente": "12345","detalles":[{"producto":"abc","cantidad":1,"total":5000}],"total": 5000}]')
+      localStorage.setItem("listaVentas", '[{"id":1,"fecha": "2022-11-28","numero": 1,"cliente": "12345","detalles":[{"producto":"abc","cantidad":1,"total":5000}],"total": 5000}]')
     }
   }
 }
