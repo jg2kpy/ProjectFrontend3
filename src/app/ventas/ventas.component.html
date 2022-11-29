@@ -1,0 +1,39 @@
+<app-navbar></app-navbar>
+<br><br><br>
+<div style="text-align: center;">
+  <h1>Ventas</h1>
+</div>
+
+<div *ngIf="listaVentas.length>0" class="container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Fecha</th>
+        <th scope="col">Nro. Factura</th>
+        <th scope="col">Cliente</th>
+        <th scope="col">Total</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let producto of listaVentas">
+        <td>{{producto.id}}</td>
+        <td>{{producto.fecha}}</td>
+        <td>{{producto.nroFactura}}</td>
+        <td>{{producto.rucCliente}}</td>
+        <td>{{producto.total}}</td>
+        <td>
+          <div class="btn-group" role="group" aria-label="Basic outlined example">
+            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editarModal"
+              (click)="setVenta(producto)">Reporte Detallado</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div style="text-align: center;">
+  <a class="btn btn-primary btn-sm" href="ventas/agregar">Registrar Venta</a>
+</div>
+<br>

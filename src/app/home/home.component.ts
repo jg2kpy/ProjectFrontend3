@@ -17,5 +17,8 @@ export class HomeComponent implements OnInit {
     if(localStorage.getItem("listaProductos") == undefined){
       localStorage.setItem("listaProductos", '[{"codigo":"abc","nombre":"Coca Cola en Lata","precioVenta":5000,"existencia":50},{"codigo":"abd123","nombre":"Coca cola 3lts","precioVenta":13000,"existencia":30},{"codigo":"abf156","nombre":"Pringles Papa Frita Barbacoa","precioVenta":19000,"existencia":19},{"codigo":"abr675","nombre":"Monster Blanco 600ml","precioVenta":12000,"existencia":10},{"codigo":"aby243","nombre":"Galletita Bono","precioVenta":6000,"existencia":25},{"codigo":"eee621","nombre":"Bad Dragon ","precioVenta":350000,"existencia":9}]')
     }
+    if(localStorage.getItem("listaVentas") == undefined){
+      localStorage.setItem("listaVentas", '[{"id": "abc","fecha": 1669680431972,"nroFactura": 1,"rucCliente": 12345,"total": 100,"listaDetalles": [{"producto": {"codigo":"abc","nombre":"Coca Cola en Lata","precioVenta":5000,"existencia":50},"cantidad": 2,"subtotal": 10000},{"producto": {"codigo":"def","nombre":"Pepsi en Lata","precioVenta":5000,"existencia":50},"cantidad": 2,"subtotal": 10000}]},{"id": "def","fecha": 1669680431972,"nroFactura": 2,"rucCliente": 12345,"total": 100,"listaDetalles": [{"producto": {"codigo":"abc","nombre":"Coca Cola en Lata","precioVenta":5000,"existencia":50},"cantidad": 2,"subtotal": 10000},{"producto": {"codigo":"def","nombre":"Pepsi en Lata","precioVenta":5000,"existencia":50},"cantidad": 2,"subtotal": 10000}]}]')
+    }
   }
 }
