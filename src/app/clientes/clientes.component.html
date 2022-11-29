@@ -1,6 +1,92 @@
+<app-navbar></app-navbar>
+<br><br><br>
+<div style="text-align: center;">
+  <h1>Clientes</h1>
+</div>
+
+<div *ngIf="listaClientes.length>0" class="container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">RUC</th>
+        <th scope="col">Nombre Completo</th>
+        <th scope="col">Email</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cliente of listaClientes">
+        <td>{{cliente.ruc}}</td>
+        <td>{{cliente.nombreCompleto}}</td>
+        <td>{{cliente.email}}</td>
+        <td>
+          <div class="btn-group" role="group" aria-label="Basic outlined example">
+            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editarModal"
+              (click)="setCliente(cliente)">Modificar</button>
+            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#eliminarModal"
+              (click)="setCliente(cliente)">Eliminar</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div style="text-align: center;">
+  <a class="btn btn-primary btn-sm" href="clientes/agregar">Agregar Cliente</a>
+</div>
 <br>
-<br>
-<br>
-<br>
-<br>
-<p>clientes works!</p>
+
+
+<!-- Modal -->
+<div class="modal fade" id="editarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Editar Cliente</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>RUC: {{clienteSeleccionado.ruc}}</p>
+
+        <p>Nombre Completo actual: {{clienteSeleccionado.nombreCompleto}}</p>
+        <p>Email actual: {{clienteSeleccionado.email}}</p>
+
+        <p>Nombre Completo nuevo: <input [(ngModel)]="clienteAEditar.nombreCompleto" [ngModelOptions]="{standalone: true}" class="form-control"></p>
+        <p>Email nuevo: <input [(ngModel)]="clienteAEditar.email" [ngModelOptions]="{standalone: true}" class="form-control"></p>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+          (click)="editarCliente()">Actualizar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="eliminarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Eliminar Cliente</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-header">
+        <h5>Esta seguro que desea eliminar este cliente?</h5>
+      </div>
+      <div class="modal-body">
+        <p>RUC: {{clienteSeleccionado.ruc}}</p>
+        <p>Nombre Completo: {{clienteSeleccionado.nombreCompleto}}</p>
+        <p>Email: {{clienteSeleccionado.email}}</p>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+          (click)="eliminarCliente()">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>

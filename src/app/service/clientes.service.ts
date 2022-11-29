@@ -5,7 +5,7 @@ import { Cliente } from '../models/cliente.model';
   providedIn: 'root',
 })
 export class ClientesService {
-  constructor() { }
+  constructor() {}
 
   getClientes(): Cliente[] {
     return JSON.parse(localStorage.getItem('listaClientes') || '');
@@ -23,22 +23,24 @@ export class ClientesService {
 
   updateCliente(actualizado: Cliente): Cliente[] | null {
     let clientes: Cliente[] = this.getClientes();
-    let producto = clientes.filter((producto) => producto.ruc == actualizado.ruc)
+    let producto = clientes.filter(
+      (producto) => producto.ruc == actualizado.ruc
+    );
     if (producto.length == 0) {
       return null;
     }
-    clientes[clientes.indexOf(producto[0])] = actualizado
+    clientes[clientes.indexOf(producto[0])] = actualizado;
     localStorage.setItem('listaClientes', JSON.stringify(clientes));
     return clientes;
   }
 
   deleteCliente(eliminar: Cliente): Cliente[] | null {
     let clientes: Cliente[] = this.getClientes();
-    let producto = clientes.filter((producto) => producto.ruc == eliminar.ruc)
+    let producto = clientes.filter((producto) => producto.ruc == eliminar.ruc);
     if (producto.length == 0) {
       return null;
     }
-    clientes.splice(clientes.indexOf(producto[0]))
+    clientes.splice(clientes.indexOf(producto[0]));
     localStorage.setItem('listaClientes', JSON.stringify(clientes));
     return clientes;
   }
