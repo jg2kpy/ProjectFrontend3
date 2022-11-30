@@ -64,3 +64,47 @@
   <div style="text-align: center;">
     <a class="btn btn-primary btn-sm" [routerLink]="['/','ventas','agregar']">Agregar Venta</a>
   </div>
+
+  <!-- Modal -->
+<div class="modal fade" id="editarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Detalles de Venta</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p><b>Cliente :</b> {{clienteSeleccionado}} </p>
+        <p><b>RUC :</b> {{clienteRuc}} </p>
+        <p><b>Fecha :</b> {{fechaSeleccionada}} </p>
+      </div>
+      <div class="modal-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Producto</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Precio</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let detalle of detalleSeleccionado">
+              <td>{{detalle.producto}}</td>
+              <td>{{detalle.cantidad}}</td>
+              <td>{{detalle.total}}</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>Total:</td>
+              <td>{{totalSeleccionado}}</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>

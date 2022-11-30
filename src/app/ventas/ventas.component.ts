@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Venta } from '../models/venta.model';
+import { ClientesService } from '../service/clientes.service';
+import { ProductosService } from '../service/productos.service';
 import { VentasService } from '../service/ventas.service';
-
-
-
 @Component({
   selector: 'app-ventas',
   templateUrl: './ventas.component.html',
@@ -17,18 +16,42 @@ export class VentasComponent implements OnInit {
   fechaHasta: any;
   rucCliente: any;
   mensajeErrorFiltro: string = '';
+  detalleSeleccionado: any[] = [];
+  listaProductos: any[] = [];
+  listaClientes: any[] = [];
+  clienteSeleccionado: any;
+  clienteRuc: any;
+  fechaSeleccionada: any;
+  totalSeleccionado: any;
 
   constructor(
-    private ventasService: VentasService
+    private ventasService: VentasService,
+    private productosService: ProductosService,
+    private clientesService: ClientesService
   ) { }
 
   ngOnInit(): void {
     this.listaVentas = this.ventasService.getVentas();
     this.ventasCopia = this.ventasService.getVentas();
+    this.listaProductos = this.productosService.getProductos();
+    this.listaClientes = this.clientesService.getClientes();
   }
 
   getDetalles(venta: Venta){
+    //Cliente Seleccionado
+    this.clienteSeleccionado = this.listaClientes.find(c => c.ruc == venta.cliente).nombreCompleto;
+    this.clienteRuc = this.listaClientes.find(c => c.ruc == venta.cliente).ruc;
+    this.fechaSeleccionada = venta.fecha;
+    this.totalSeleccionado = venta.total;
+    console.log(this.clienteSeleccionado);
 
+    //Producto, Cantidad, Total
+    this.detalleSeleccionado=venta.detalles;
+
+    for (let index = 0; index < this.detalleSeleccionado.length; index++) {
+      const element = this.detalleSeleccionado[index];
+      element.producto = this.listaProductos.find(p => p.codigo == element.producto).nombre;
+    }
   }
 
   // Filtrar por rango de fechas
