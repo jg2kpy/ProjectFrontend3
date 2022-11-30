@@ -42,6 +42,7 @@
           <th scope="col">Fecha</th>
           <th scope="col">Nro Factura</th>
           <th scope="col">Ruc Cliente</th>
+          <th scope="col">Total de la Venta</th>
           <th scope="col">Ver Detalles</th>
         </tr>
       </thead>
@@ -51,6 +52,7 @@
           <td>{{venta.fecha}}</td>
           <td>{{venta.numero}}</td>
           <td>{{venta.cliente }}</td>
+          <td>{{venta.total }}</td>
           <td>
             <div class="btn-group" role="group" aria-label="Basic outlined example">
               <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editarModal"
